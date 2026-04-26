@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emerald Gaming | Dijital Oyun Mağazası</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="pointer-events-none fixed inset-0 -z-[20] min-h-[100dvh]" aria-hidden="true">
+        <div class="galaxy-container h-full min-h-full w-full">
+            <canvas id="galaxyCanvas" style="width: 100%; height: 100%;"></canvas>
+        </div>
+    </div>
+
+    <div class="aurora-bg" id="aurora"></div>
+
+    <header id="navbar">
+        <div class="logo">EMERALD<span>STORE</span></div>
+        <nav>
+            <ul>
+                <li><a href="/">Ana Sayfa</a></li>
+                <li><a href="#games">Oyunlar</a></li>
+                <li><a href="#library">Kütüphane</a></li>
+                <li><a href="#support">Destek</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="#" class="btn-login">Giriş Yap</a>
+            <a href="#" class="btn-register">Kayıt Ol</a>
+        </div>
+    </header>
+
+    <section class="hero">
+    <div class="hero-content">
+        <h1>Hikayeli Oyunlara Erişimin <br><span class="neon-text">En Uygun Yolu</span></h1>
+        <p>Steam, Epic Games, EA ve diğer platformlardaki en popüler oyunları erken erişim ayrıcalığıyla, bütçe dostu ve lüks bir deneyimle keşfedin.</p>
+        <button class="btn-explore">Hemen Keşfet</button>
+
+<div class="platform-scroller">
+    <div class="platform-grid">
+        <div class="platform-item"><img src="gta5.png" alt="GTA5"></div>
+        <div class="platform-item"><img src="rdr2.png" alt="RDR2"></div>
+        <div class="platform-item"><img src="rust.png" alt="RUST"></div>
+        <div class="platform-item"><img src="60sec.png" alt="60SECONDS"></div>
+        <div class="platform-item"><img src="forza.png" alt="FORZA"></div>
+        <div class="platform-item"><img src="payday.png" alt="PAYDAY3"></div>
+        <div class="platform-item"><img src="starwars.png" alt="STARWARS"></div>
+        <div class="platform-item"><img src="fc26.png" alt="FC26"></div>
+        <div class="platform-item"><img src="resident.png" alt="RESIDENTEVIL"></div>
+        <div class="platform-item"><img src="fnaf.png" alt="FNAF"></div>
+        <div class="platform-item"><img src="escape.png" alt="ESCAPE"></div>
+        <div class="platform-item"><img src="farcry6.png" alt="FARCRY6"></div>
+        <div class="platform-item"><img src="hitman.png" alt="HITMAN"></div>
+        <div class="platform-item"><img src="marvelrivals.png" alt="MARVELRIVALS"></div>
+        <div class="platform-item"><img src="sonsoftheforest.png" alt="SONSOFTHEFOREST"></div>
+        <div class="platform-item"><img src="assettocorsa.png" alt="ASSETTOCORSA"></div>
+        <div class="platform-item"><img src="2K26.png" alt="2K26"></div>
+        <div class="platform-item"><img src="left4dead2.png" alt="LEFT4DEAD2"></div>
+        <div class="platform-item"><img src="dyinglight.png" alt="DYINGLIGHT"></div>
+        <div class="platform-item"><img src="godofwar.png" alt="GODOFWAR"></div>
+
+        <div class="platform-item"><img src="gta5.png" alt="GTA5"></div>
+        <div class="platform-item"><img src="rdr2.png" alt="RDR2"></div>
+        <div class="platform-item"><img src="rust.png" alt="RUST"></div>
+        <div class="platform-item"><img src="60sec.png" alt="60SECONDS"></div>
+        <div class="platform-item"><img src="forza.png" alt="FORZA"></div>
+        <div class="platform-item"><img src="payday.png" alt="PAYDAY3"></div>
+        <div class="platform-item"><img src="starwars.png" alt="STARWARS"></div>
+        <div class="platform-item"><img src="fc26.png" alt="FC26"></div>
+        <div class="platform-item"><img src="resident.png" alt="RESIDENTEVIL"></div>
+        <div class="platform-item"><img src="fnaf.png" alt="FNAF"></div>
+        <div class="platform-item"><img src="escape.png" alt="ESCAPE"></div>
+        <div class="platform-item"><img src="farcry6.png" alt="FARCRY6"></div>
+        <div class="platform-item"><img src="hitman.png" alt="HITMAN"></div>
+        <div class="platform-item"><img src="marvelrivals.png" alt="MARVELRIVALS"></div>
+        <div class="platform-item"><img src="sonsoftheforest.png" alt="SONSOFTHEFOREST"></div>
+        <div class="platform-item"><img src="assettocorsa.png" alt="ASSETTOCORSA"></div>
+        <div class="platform-item"><img src="2K26.png" alt="2K26"></div>
+        <div class="platform-item"><img src="left4dead2.png" alt="LEFT4DEAD2"></div>
+        <div class="platform-item"><img src="dyinglight.png" alt="DYINGLIGHT"></div>
+        <div class="platform-item"><img src="godofwar.png" alt="GODOFWAR"></div>
+    </div>
+</div>
+    </section>
+
+<section class="stats-premium">
+    <div class="badge-container">
+        <div class="section-badge">
+            <i class="fa-solid fa-star" style="color: var(--primary-green); font-size: 8px;"></i>
+            EMERALD
+        </div>
+    </div>
+<div class="stats-container-relative">
+        <div class="stats-glass-bg-layer"></div>
+        <div class="stats-wrapper">
+            
+            <div class="premium-card">
+                <div class="card-glow"></div>
+                <div class="card-inner">
+                    <div class="card-icon-box"><i class="fa-solid fa-users"></i></div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h2 class="card-number">15K<span class="plus">+</span></h2>
+                            <span class="card-tag">Aktif Oyuncu</span>
+                        </div>
+                        <p class="card-info">Türkiye'nin en geniş oyun topluluğuna katılan mutlu kullanıcılar.</p>
+                    </div>
+                </div>
+            </div>
+
+        <div class="premium-card">
+            <div class="card-glow"></div>
+            <div class="card-inner">
+                <div class="card-icon-box">
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <h2 class="card-number">4.8/5</h2>
+                        <span class="card-tag">Memnuniyet</span>
+                    </div>
+                    <p class="card-info">Binlerce gerçek kullanıcı yorumuyla tescillenmiş kusursuz hizmet.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="premium-card">
+            <div class="card-glow"></div>
+            <div class="card-inner">
+                <div class="card-icon-box">
+                    <i class="fa-solid fa-gamepad"></i>
+                </div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <h2 class="card-number">250<span class="plus">+</span></h2>
+                        <span class="card-tag">Dijital Oyun</span>
+                    </div>
+                    <p class="card-info">Sadece popüler değil, keşfedilmeyi bekleyen yüzlerce farklı macera.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="premium-card">
+            <div class="card-glow"></div>
+            <div class="card-inner">
+                <div class="card-icon-box">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <h2 class="card-number">7/24</h2>
+                        <span class="card-tag">Canlı Destek</span>
+                    </div>
+                    <p class="card-info">Anında teslimat ve saniyeler içinde cevap veren uzman destek ekibi.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<section class="process-section">
+    <div class="container">
+        <div class="section-header-center">
+            <div class="badge-container">
+                <div class="section-badge">
+                    <i class="fa-solid fa-wand-magic-sparkles" style="color: rgb(230, 255, 117); font-size: 8px;"></i>
+                    SÜREÇ
+                </div>
+            </div>
+            <h2 class="section-title">Nasıl İşliyor?</h2>
+            <p class="section-subtitle">Emerald Store'dan hayalindeki oyuna kavuşmak sadece birkaç saniye sürer.</p>
+        </div>
+
+        <div class="process-stepper">
+            <div class="step-item step-1">
+                <div class="step-icon-wrapper">
+                    <div class="step-number">01</div>
+                    <div class="step-icon"><i class="fa-solid fa-user-plus"></i></div>
+                </div>
+                <h3>Kayıt Ol</h3>
+                <p>Saniyeler içinde hesabını oluştur.</p>
+            </div>
+
+            <div class="step-connector conn-1"></div>
+
+            <div class="step-item step-2">
+                <div class="step-icon-wrapper">
+                    <div class="step-number">02</div>
+                    <div class="step-icon"><i class="fa-solid fa-key"></i></div>
+                </div>
+                <h3>Key'i Doğrula</h3>
+                <p>Satın aldığınız oyuna ait anahtarı, <a href="verify.html" style="color: rgb(91, 129, 255);">doğrulama</a> sayfasından doğrulayın.</p>
+            </div>
+
+            <div class="step-connector conn-2"></div>
+
+            <div class="step-item step-3">
+                <div class="step-icon-wrapper">
+                    <div class="step-number">03</div>
+                    <div class="step-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                </div>
+                <h3>Guard Kodunu Al</h3>
+                <p>Doğrulanmış oyunun guard kodunu <a href="guard.html" style="color: rgb(91, 129, 255);">kod al</a> sayfasından oyunu seçerek alın.</p>
+            </div>
+
+            <div class="step-connector conn-3"></div>
+
+            <div class="step-item step-4">
+                <div class="step-icon-wrapper">
+                    <div class="step-number">04</div>
+                    <div class="step-icon"><i class="fa-solid fa-gamepad"></i></div>
+                </div>
+                <h3>Oynamaya Başla</h3>
+                <p>Dilediğiniz gibi oynamaya başlayın.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="glowing-divider">
+    <div class="shimmer"></div>
+</div>
+
+<section class="advantages-section">
+    <div class="badge-container">
+        <div class="section-badge">
+            <i class="fa-solid fa-crown" style="color: rgb(255, 50, 50); font-size: 8px;"></i>
+            AVANTAJLARIMIZ
+        </div>
+    </div>
+    
+    <h2 class="section-title">Neden Bizi Tercih Etmelisiniz?</h2>
+    <p class="section-subtitle">Oyun dünyasında fark yaratan hizmet anlayışımızla tanışın.</p>
+<div class="advantages-grid">
+        <div class="advantage-card">
+            <div class="icon-box"><i class="fa-solid fa-shield-heart"></i></div>
+            <h3 class="card-title">Güvenli Alışveriş</h3>
+            <p class="card-desc">Sektörün en kapsamlı güvenlik protokolleriyle, kişisel verileriniz ve ödemeleriniz her zaman güvende.</p>
+        </div>
+
+        <div class="advantage-card">
+            <div class="icon-box"><i class="fa-solid fa-clock-rotate-left"></i></div>
+            <h3 class="card-title">7/24 Anında Teslimat</h3>
+            <p class="card-desc">Ödemeniz onaylandığı anda dijital ürününüz saniyeler içerisinde otomatik olarak teslim edilir.</p>
+        </div>
+
+        <div class="advantage-card">
+            <div class="icon-box"><i class="fa-solid fa-headset"></i></div>
+            <h3 class="card-title">Kesintisiz Destek</h3>
+            <p class="card-desc">7/24 hizmet veren uzman destek ekibimiz sayesinde tüm sorularınıza anında çözüm bulabilirsiniz.</p>
+        </div>
+
+        <div class="advantage-card">
+            <div class="icon-box"><i class="fa-solid fa-gamepad"></i></div>
+            <h3 class="card-title">Geniş Oyun Kütüphanesi</h3>
+            <p class="card-desc">Sürekli güncellenen geniş oyun kütüphanemizde her zevke uygun yüzlerce dijital oyun seçeneği...</p>
+        </div>
+    </div>
+</section>
+
+<div class="glowing-divider red-beam">
+    <div class="shimmer"></div>
+</div>
+
+<section class="cta-section">
+    <div class="cta-glass-bg"></div>
+    <div class="cta-layout">
+        <!-- Sol: CTA Kartı -->
+        <div class="cta-card">
+            <h2>Hemen <span class="highlight">Oyun Dünyasına</span> Dalın!</h2>
+            <p>Aradığınız tüm popüler oyunlar ve dijital ürünler tek bir noktada.</p>
+            
+            <div class="cta-buttons">
+                <button class="cta-primary" onclick="location.href='login.html'">Hesap Oluştur</button>
+                <button class="cta-secondary" onclick="location.href='store.html'">Oyunları Keşfet</button>
+            </div>
+            
+            <div class="cta-icons">
+                <iconify-icon icon="mdi:steam" mode="style" style="--brand-color: #6474ff;" title="Steam"></iconify-icon>
+                <iconify-icon icon="simple-icons:epicgames" mode="style" style="--brand-color: #ffffff;" title="Epic Games"></iconify-icon>
+                <iconify-icon icon="simple-icons:ubisoft" mode="style" style="--brand-color: #4ca9ff;" title="Ubisoft"></iconify-icon>
+                <iconify-icon icon="simple-icons:ea" mode="style" style="--brand-color: #ff4747;" title="EA Sports"></iconify-icon>
+                <iconify-icon icon="simple-icons:rockstargames" mode="style" style="--brand-color: #fca311;" title="Rockstar Games"></iconify-icon>
+            </div>
+        </div>
+
+        <!-- Animasyonlu Ayraç -->
+        <div class="cta-divider">
+            <div class="divider-line"></div>
+            <div class="divider-orb"></div>
+            <div class="divider-line"></div>
+        </div>
+
+        <!-- Sağ: İstatistik Kutusu -->
+        <div class="cta-stats-box">
+            <div class="stats-big-number">
+                <span class="stats-counter" data-target="250">0</span><span class="stats-plus">+</span>
+            </div>
+            <p class="stats-big-label">oyun sizi bekliyor</p>
+            <div class="stats-mini-row">
+                <div class="stats-mini-item">
+                    <span class="stats-mini-num">15K+</span>
+                    <span class="stats-mini-label">KULLANICI</span>
+                </div>
+                <div class="stats-mini-divider"></div>
+                <div class="stats-mini-item">
+                    <span class="stats-mini-num">4.9</span>
+                    <span class="stats-mini-label">PUAN</span>
+                </div>
+                <div class="stats-mini-divider"></div>
+                <div class="stats-mini-item">
+                    <span class="stats-mini-num">7/24</span>
+                    <span class="stats-mini-label">DESTEK</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    
+    <script src="script.js"></script>
+</body>
+</html>
