@@ -1757,6 +1757,7 @@ nav ul li a:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     
     /* BU SATIRLARI EKLE/GÜNCELLE: */
     position: relative;
@@ -1832,20 +1833,23 @@ nav ul li a:hover {
     gap: 15px;
 }
 
+/* İkonların devasa büyümesini engelleyen ve sabitleyen kod */
 .q-icon {
-    width: 20px;
-    height: 20px;
+    width: 22px !important;
+    height: 22px !important;
+    font-size: 22px !important; /* Iconify için kritik */
     color: #00e5ff;
-    opacity: 0.9;
+    flex-shrink: 0; /* İkonun ezilmesini önler */
     filter: drop-shadow(0 0 5px rgba(0, 229, 255, 0.3));
-    shape-rendering: geometricPrecision;
 }
 
+/* Ok ikonunu sabitle */
 .arrow-icon {
-    width: 20px;
-    height: 20px;
-    color: #4b5563;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 18px !important;
+    height: 18px !important;
+    font-size: 18px !important;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
 }
 
 .faq-item.active .arrow-icon {
