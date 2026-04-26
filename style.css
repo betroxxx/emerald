@@ -216,9 +216,11 @@ header.scrolled {
 }
 
 .logo {
+    color: white;
     font-weight: 900;
     font-size: 1.6rem;
     letter-spacing: 2px;
+    text-decoration: none;
 }
 
 .logo span {
@@ -560,15 +562,19 @@ nav ul li a:hover {
 /* --- STEPPER YAPISI (Görseldeki gibi) --- */
 .process-stepper {
     display: flex;
-    justify-content: center; /* space-between SİLİNDİ: Elemanlar lastik gibi esnemeyecek, ortada toplanacak */
+    justify-content: center;
+    /* space-between SİLİNDİ: Elemanlar lastik gibi esnemeyecek, ortada toplanacak */
     align-items: flex-start;
     max-width: 1500px;
     margin: 50px auto;
-    gap: 0; /* Otomatik boşluğu sildik, kontrol tamamen çizgilerde */
+    gap: 0;
+    /* Otomatik boşluğu sildik, kontrol tamamen çizgilerde */
 }
+
 .step-item {
     /* flex: 1; SİLİNDİ! Artık kendi başlarına buyruk uzamayacaklar */
-    width: 220px; /* Metinlerin rahat sığması için sabit kutu genişliği */
+    width: 220px;
+    /* Metinlerin rahat sığması için sabit kutu genişliği */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -627,20 +633,22 @@ nav ul li a:hover {
 
 /* --- BAĞLANTI ÇİZGİSİ --- */
 .step-connector {
-    width: 190px; /* 1. AYAR: Çizginin toplam uzunluğunu buradan ayarla */
+    width: 190px;
+    /* 1. AYAR: Çizginin toplam uzunluğunu buradan ayarla */
     flex: none;
     height: 2px;
     background: rgba(255, 255, 255, 0.1);
-    
+
     /* 2. AYAR: ÇİZGİNİN İKONA UZAKLIĞI (Çok Kritik) */
     /* Sağ ve Sola -45px verdik. 
        - Eğer çizgi ikona çok yakınsa / çarpıyorsa eksi değeri küçült (Örn: -30px)
        - Eğer çizgi ile ikon arasında çok boşluk varsa eksi değeri büyüt (Örn: -65px) */
-    margin: 34px -45px 0 -45px; 
-    
+    margin: 34px -45px 0 -45px;
+
     position: relative;
     overflow: hidden;
-    z-index: 1; /* Çizgi ikonun (z-index: 2) arkasından geçer, mükemmel görünür */
+    z-index: 1;
+    /* Çizgi ikonun (z-index: 2) arkasından geçer, mükemmel görünür */
 }
 
 /* Sarı Dolma Çizgisi */
@@ -672,14 +680,18 @@ nav ul li a:hover {
         gap: 20px;
         align-items: center;
     }
+
     .step-item {
         width: 100%;
     }
+
     .step-connector {
         width: 3px;
         height: 50px;
-        margin: 0; /* Mobilde o eksi marginleri sıfırlıyoruz ki düzen bozulmasın */
+        margin: 0;
+        /* Mobilde o eksi marginleri sıfırlıyoruz ki düzen bozulmasın */
     }
+
     .step-connector::after {
         animation: flowLineVertical 2s infinite linear;
         width: 100%;
@@ -1409,6 +1421,10 @@ nav ul li a:hover {
     -webkit-backdrop-filter: blur(12px);
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
     animation: slideInRight 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: subpixel-antialiased;
+    will-change: transform;
+    transform: translateZ(0);
     position: relative;
     overflow: hidden;
 }
@@ -1667,23 +1683,23 @@ nav ul li a:hover {
 .glowing-divider {
     position: relative;
     width: 100%;
-    height: 1px; /* Ana çizgi çok ince, sadece ışığın kaynağı */
+    height: 1px;
+    /* Ana çizgi çok ince, sadece ışığın kaynağı */
     margin: 50px auto;
-    
+
     /* Uçlara doğru tamamen yok olan (maskelenmiş) yapı */
-    background: linear-gradient(90deg, 
-        transparent 0%, 
-        #ffcc00 50%, 
-        transparent 100%
-    );
-    
+    background: linear-gradient(90deg,
+            transparent 0%,
+            #ffcc00 50%,
+            transparent 100%);
+
     /* Işın kılıcı efekti: Çok katmanlı parlama (Glow) */
-    box-shadow: 
-        0 0 10px #ffcc00, 
-        0 0 20px #ffcc00, 
+    box-shadow:
+        0 0 10px #ffcc00,
+        0 0 20px #ffcc00,
         0 0 40px rgba(255, 204, 0, 0.6),
         0 0 60px rgba(255, 204, 0, 0.2);
-    
+
     /* Nefes alma efekti: Işığın titremesi */
     animation: beamPulse 2s infinite ease-in-out;
 }
@@ -1697,52 +1713,68 @@ nav ul li a:hover {
     transform: translateY(-50%);
     width: 40%;
     height: 2px;
-    background: linear-gradient(90deg, 
-        transparent, 
-        #fff, /* Merkeze beyaz ışık ekleyerek enerji efekti veriyoruz */
-        transparent
-    );
+    background: linear-gradient(90deg,
+            transparent,
+            #fff,
+            /* Merkeze beyaz ışık ekleyerek enerji efekti veriyoruz */
+            transparent);
     filter: blur(1px);
     animation: beamFlow 3s infinite linear;
 }
 
 @keyframes beamPulse {
-    0%, 100% { opacity: 0.8; transform: scaleY(1); filter: blur(0.5px); }
-    50% { opacity: 1; transform: scaleY(1.5); filter: blur(1px); }
+
+    0%,
+    100% {
+        opacity: 0.8;
+        transform: scaleY(1);
+        filter: blur(0.5px);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scaleY(1.5);
+        filter: blur(1px);
+    }
 }
 
 @keyframes beamFlow {
-    0% { left: -100%; }
-    100% { left: 200%; }
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 200%;
+    }
 }
 
 /* --- KIRMIZI IŞIN KILICI VARYASYONU --- */
 .red-beam {
     /* Uçlara doğru sönen kırmızı gradyan */
-    background: linear-gradient(90deg, 
-        transparent 0%, 
-        #ff3131 50%, 
-        transparent 100%
-    );
-    
+    background: linear-gradient(90deg,
+            transparent 0%,
+            #ff3131 50%,
+            transparent 100%);
+
     /* Kırmızı Neon Parlama (Glow) */
-    box-shadow: 
-        0 0 10px #ff3131, 
-        0 0 20px #ff3131, 
+    box-shadow:
+        0 0 10px #ff3131,
+        0 0 20px #ff3131,
         0 0 40px rgba(255, 49, 49, 0.6),
         0 0 60px rgba(255, 49, 49, 0.2);
-    
-    margin: 100px auto; /* Boşluk ayarı */
+
+    margin: 100px auto;
+    /* Boşluk ayarı */
     margin-top: 5px;
 }
 
 /* Kırmızı kılıcın içinden geçen yüksek enerjili ışık */
 .red-beam::after {
-    background: linear-gradient(90deg, 
-        transparent, 
-        #ffeded, /* Kırmızı kılıç için çok açık pembe/beyaz enerji çekirdeği */
-        transparent
-    );
+    background: linear-gradient(90deg,
+            transparent,
+            #ffeded,
+            /* Kırmızı kılıç için çok açık pembe/beyaz enerji çekirdeği */
+            transparent);
 }
 
 /* =======================================================
@@ -1758,10 +1790,11 @@ nav ul li a:hover {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    
+
     /* BU SATIRLARI EKLE/GÜNCELLE: */
     position: relative;
-    z-index: 99; /* Aurora arka planının üstüne zorlar */
+    z-index: 99;
+    /* Aurora arka planının üstüne zorlar */
 }
 
 /* SSS Bölümü: Badge, başlık ve alt başlığı ortala */
@@ -1803,11 +1836,15 @@ nav ul li a:hover {
     overflow: hidden;
     transition: all 0.3s ease;
     cursor: pointer;
-    opacity: 1;             /* Görünür yaptık */
-    transform: none;        /* Kayıklığı düzelttik */
+    opacity: 1;
+    /* Görünür yaptık */
+    transform: none;
+    /* Kayıklığı düzelttik */
     position: relative;
-    z-index: 1000;          /* En üste aldık */
-    width: 100%;            /* Düzensizliği engellemek için tam genişlik */
+    z-index: 1000;
+    /* En üste aldık */
+    width: 100%;
+    /* Düzensizliği engellemek için tam genişlik */
 }
 
 .faq-item.active {
@@ -1837,9 +1874,11 @@ nav ul li a:hover {
 .q-icon {
     width: 22px !important;
     height: 22px !important;
-    font-size: 22px !important; /* Iconify için kritik */
+    font-size: 22px !important;
+    /* Iconify için kritik */
     color: #00e5ff;
-    flex-shrink: 0; /* İkonun ezilmesini önler */
+    flex-shrink: 0;
+    /* İkonun ezilmesini önler */
     filter: drop-shadow(0 0 5px rgba(0, 229, 255, 0.3));
 }
 
@@ -1880,4 +1919,532 @@ nav ul li a:hover {
 .faq-item.reveal.active-reveal {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* DEĞERLENDİRMELER Bölümü: Badge, başlık ve alt başlığı ortala */
+.reviews-section .section-header {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-top: -80px;
+    padding: 0 20px;
+}
+
+.reviews-section .section-header .section-badge {
+    margin-bottom: 15px;
+}
+
+.reviews-section .section-header .section-title {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.reviews-section .section-header .section-subtitle {
+    text-align: center;
+    max-width: 600px;
+}
+
+/* SSS Bölümü İçin Mavi Ayraç Stili */
+.faq-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 110px 20px;
+    /* Üst ve alttan boşluk */
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    margin-top: -140px;
+}
+
+.faq-divider .divider-line {
+    height: 1px;
+    flex: 1;
+    /* Mavi degrade çizgi */
+    background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.5), transparent);
+}
+
+.faq-divider .divider-orb {
+    width: 10px;
+    height: 10px;
+    background: #00e5ff;
+    border-radius: 50%;
+    /* Mavi parlama efekti */
+    box-shadow: 0 0 20px #00e5ff, 0 0 40px rgba(0, 229, 255, 0.4);
+    position: relative;
+}
+
+/* Küreye küçük bir animasyon (isteğe bağlı) */
+.faq-divider .divider-orb::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    border-radius: 50%;
+    animation: orb-pulse 2s infinite;
+}
+
+@keyframes orb-pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+
+/* --- DEĞERLENDİRME BÖLÜMÜ --- */
+.reviews-section {
+    padding: 80px 0;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    z-index: 10;
+}
+
+.reviews-slider {
+    width: 100%;
+    overflow: hidden;
+    padding: 40px 0;
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+.reviews-track {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 30px;
+    /* margin-right yerine gap kullanıyoruz (platform-grid mantığı) */
+    width: max-content;
+    animation: scrollReviews 30s linear infinite;
+    will-change: transform;
+}
+
+/* platform-grid ile aynı mantık: -50% tam yarıya gelince sıfırlanır, gap'in yarısı (15px) da hesaba katılır */
+@keyframes scrollReviews {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-50% - 15px));
+    }
+}
+
+.reviews-track:hover {
+    animation-play-state: paused;
+}
+
+.review-card {
+    background: rgba(13, 19, 38, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    width: 400px;
+    padding: 25px;
+    flex-shrink: 0;
+    /* gap ile yönetildiği için margin-right kaldırıldı */
+    backdrop-filter: blur(10px);
+}
+
+.review-user {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+/* İnsan İkonu İçin Placeholder */
+.user-avatar-placeholder {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #00e5ff;
+    border: 1px solid rgba(0, 229, 255, 0.2);
+}
+
+.user-info h4 {
+    font-size: 16px;
+    color: #fff;
+    margin: 0;
+}
+
+.post-time {
+    font-size: 11px;
+    color: #00e5ff;
+    /* Doğrulanmış kullanıcı vurgusu */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.review-text {
+    font-size: 14px;
+    color: #94a3b8;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Yıldızlar */
+.review-stars {
+    display: flex;
+    gap: 4px;
+    color: #ffb800;
+    font-size: 16px;
+}
+
+/* =======================================================
+   REVEAL FOOTER V2 (Görsele Göre Milimetrik Ayar)
+   ======================================================= */
+
+.main-footer-v2 {
+    position: relative;
+    padding: 80px 0 40px;
+    background: transparent;
+    overflow: hidden;
+}
+
+.footer-inner-v2 {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 10;
+}
+
+.footer-top-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 64px;
+    padding-bottom: 10px;
+}
+
+@media (min-width: 1024px) {
+    .footer-top-grid {
+        grid-template-columns: repeat(12, 1fr);
+    }
+
+    .footer-brand-col {
+        grid-column: span 5;
+    }
+
+    .footer-links-container {
+        grid-column: span 7;
+    }
+}
+
+/* Brand Section Styles */
+.brand-link-v2 {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+    width: fit-content;
+}
+
+.brand-link-v2 img {
+    width: 48px;
+    height: 48px;
+}
+
+.brand-text-v2 {
+    font-size: 28px;
+    font-weight: 900;
+    color: #fff;
+    text-transform: uppercase;
+    font-style: italic;
+    letter-spacing: -2px;
+}
+
+.brand-text-v2 span {
+    color: #334286;
+}
+
+.brand-description-v2 {
+    margin-top: 40px;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 13px;
+    line-height: 1.6;
+    max-width: 384px;
+    font-weight: 500;
+}
+
+/* Stat Badges */
+.footer-stats-v2 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 40px;
+}
+
+.stat-badge-v2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.stat-badge-v2.emerald {
+    background: rgba(16, 185, 129, 0.05);
+    border: 1px solid rgba(16, 185, 129, 0.1);
+    color: #10b981;
+}
+
+.stat-badge-v2.electric {
+    background: rgba(0, 229, 255, 0.05);
+    border: 1px solid rgba(0, 229, 255, 0.1);
+    color: #00e5ff;
+}
+
+/* Pulse Animation */
+[class*="pulse-dot"] {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    animation: footerPulse 2s infinite;
+}
+
+.pulse-dot-emerald {
+    background: #10b981;
+}
+
+.pulse-dot-electric {
+    background: #00e5ff;
+}
+
+@keyframes footerPulse {
+    0% {
+        transform: scale(0.95);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.95);
+        opacity: 0.5;
+    }
+}
+
+/* Link Columns */
+.footer-links-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px;
+}
+
+@media (min-width: 640px) {
+    .footer-links-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.link-group-v2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.link-group-v2 h3 {
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.3);
+    margin-bottom: 32px;
+}
+
+.link-group-v2 ul {
+    list-style: none;
+}
+
+.link-group-v2 ul:not(.contact-links-v2) {
+    text-align: center;
+}
+
+.link-group-v2 ul li {
+    margin-bottom: 16px;
+}
+
+.link-group-v2 ul li a {
+    color: rgba(255, 255, 255, 0.4);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.link-group-v2 ul li a:hover {
+    color: #fff;
+}
+
+/* Legal and Bottom Bar */
+.footer-legal-v2 {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 12px;
+    line-height: 1.6;
+    text-align: center;
+    max-width: 896px;
+    margin: 0 auto;
+    padding-top: 32px;
+}
+
+.footer-bottom-bar-v2 {
+    margin-top: 48px;
+    padding-top: 48px;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+@media (min-width: 768px) {
+    .footer-bottom-bar-v2 {
+        flex-direction: row;
+    }
+}
+
+.copyright-v2 {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 11px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+.social-icons-v2 {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+
+.social-icons-v2 a {
+    color: rgba(255, 255, 255, 0.2);
+    transition: 0.3s;
+    width: 20px;
+}
+
+.social-icons-v2 a:hover {
+    color: #00e5ff;
+}
+
+.contact-links-v2 {
+    list-style: none;
+    /* Liste işaretlerini kaldır */
+    padding: 0;
+    /* Sol taraftaki varsayılan boşluğu sıfırla */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    /* 🔥 BU ÇOK ÖNEMLİ */
+    gap: 12px;
+}
+
+.contact-links-v2 li {
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.contact-links-v2 li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(255, 255, 255, 0.4);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.contact-links-v2 li a:hover {
+    color: #fff;
+}
+
+.link-icon-v2 {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* SOSYAL İKON HOVER RENKLERİ */
+.social-icons-v2 a.soc-discord:hover {
+    color: #5865F2 !important;
+}
+
+.social-icons-v2 a.soc-whatsapp:hover {
+    color: #25D366 !important;
+}
+
+.social-icons-v2 a.soc-web:hover {
+    color: #c0c1ff !important;
+}
+
+/* Geri butonunu gizlemek için kullanılacak sınıf */
+.hidden-element {
+    display: none !important;
+}
+
+.search-wrapper {
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto 30px;
+}
+
+#category-search {
+    width: 100%;
+    padding: 15px 20px 15px 45px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 229, 255, 0.2);
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+    backdrop-filter: blur(10px);
+}
+
+#category-search:focus {
+    border-color: #00e5ff;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(0, 229, 255, 0.5);
+    pointer-events: none;
 }
