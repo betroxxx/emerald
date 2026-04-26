@@ -238,3 +238,20 @@ function smoothScrollRender() {
 }
 
 smoothScrollRender();
+
+// --- SSS TIKLAMA FONKSİYONU ---
+document.addEventListener('DOMContentLoaded', () => {
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+        item.addEventListener('click', () => {
+            // Diğer açık olanları kapat (Opsiyonel: İstersen bu 3 satırı silebilirsin)
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) otherItem.classList.remove('active');
+            });
+
+            // Tıklananı aç/kapat
+            item.classList.toggle('active');
+        });
+    });
+});
