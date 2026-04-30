@@ -338,6 +338,7 @@ nav ul li a:hover {
     border-radius: 8px;
     cursor: pointer;
     transition: var(--transition);
+    text-decoration: none;
 }
 
 .btn-explore:hover {
