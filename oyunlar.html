@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tüm Oyunlar | Emerald Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="pointer-events-none fixed inset-0 -z-[20] min-h-[100dvh]" aria-hidden="true">
+        <div class="galaxy-container h-full min-h-full w-full">
+            <canvas id="galaxyCanvas" style="width: 100%; height: 100%;"></canvas>
+        </div>
+    </div>
+
+    <div class="aurora-bg"></div>
+
+    <header id="navbar">
+        <a href="/" class="logo">EMERALD<span>STORE</span></a>
+        <nav>
+            <ul>
+                <li><a href="/">Ana Sayfa</a></li>
+                <li><a href="oyunlar.html">Oyunlar</a></li>
+                <li><a href="kodal.html">Kod Al</a></li>
+                <li><a href="dogrulama.html">Doğrulama</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="#" class="btn-login">Giriş Yap</a>
+            <a href="#" class="btn-register">Kayıt Ol</a>
+        </div>
+    </header>
+
+    <main class="games-page-content">
+        <section class="games-head">
+            <h1>TÜM OYUNLAR</h1>
+            <div class="header-line"></div> 
+            <div class="filter-controls">
+                <div class="search-box-v2">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Oyun ara...">
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active">Hepsi</button>
+                    <button class="filter-btn">Steam</button>
+                    <button class="filter-btn">Epic Games</button>
+                    <button class="filter-btn">Ubisoft</button>
+                    <button class="filter-btn">EA Sports</button>
+                    <button class="filter-btn">Rockstar Games</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-games-section">
+            <div class="container">
+                <div class="games-header">
+                    <div class="header-title featured-title-effect">
+                        <div class="sparkle sparkle-1"></div>
+                        <div class="sparkle sparkle-2"></div>
+                        <div class="sparkle sparkle-3"></div>
+                        <div class="sparkle sparkle-4"></div>
+                        <div class="sparkle sparkle-5"></div>
+                        <h2>ÖNE ÇIKAN <span>OYUNLAR</span></h2>
+                    </div>
+                </div>
+
+                <div class="games-grid featured-grid">
+                    <div class="featured-game-card featured-card">
+                        <div class="featured-game-thumb">
+                            <img src="featured-cards/gta5.png" alt="GTA V">
+                            <div class="card-tag">POPÜLER</div>
+                        </div>
+                        <div class="featured-game-content">
+                            <h3>Grand Theft Auto V</h3>
+                            <div class="featured-game-footer">
+                                <div class="game-icons">
+                                    <div class="platform-badge steam">
+                                        <span>Steam</span>
+                                    </div>
+                                    <div class="platform-badge rockstar">
+                                        <span>Rockstar Games</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="featured-game-card featured-card">
+                        <div class="featured-game-thumb">
+                            <img src="featured-cards/fc26.png" alt="EA FC 26">
+                            <div class="card-tag">YENİ</div>
+                        </div>
+                        <div class="featured-game-content">
+                            <h3>EA SPORTS FC 26</h3>
+                            <div class="featured-game-footer">
+                                <div class="game-icons">
+                                    <div class="platform-badge steam">
+                                        <span>Steam</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="featured-game-card featured-card">
+                        <div class="featured-game-thumb">
+                            <img src="featured-cards/forza.png" alt="Forza Horizon 5">
+                            <div class="card-tag">YENİ</div>
+                        </div>
+                        <div class="featured-game-content">
+                            <h3>Forza Horizon 5</h3>
+                            <div class="featured-game-footer">
+                                <div class="game-icons">
+                                    <div class="platform-badge steam">
+                                        <span>Steam</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="featured-game-card featured-card">
+                        <div class="featured-game-thumb">
+                            <img src="featured-cards/godofwar.png" alt="God of War Ragnarök">
+                            <div class="card-tag">YENİ</div>
+                        </div>
+                        <div class="featured-game-content">
+                            <h3>God of War Ragnarök</h3>
+                            <div class="featured-game-footer">
+                                <div class="game-icons">
+                                    <div class="platform-badge steam">
+                                        <span>Steam</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="featured-game-card featured-card">
+                        <div class="featured-game-thumb">
+                            <img src="featured-cards/deadbydaylight.png" alt="Dead By Daylight">
+                        </div>
+                        <div class="featured-game-content">
+                            <h3>Dead By Daylight</h3>
+                            <div class="featured-game-footer">
+                                <div class="game-icons">
+                                    <div class="platform-badge steam">
+                                        <span>Steam</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="featured-game-card featured-card">
+                        <div class="featured-game-thumb">
+                            <img src="featured-cards/rdr2.png" alt="RDR 2">
+                        </div>
+                        <div class="featured-game-content">
+                            <h3>Red Dead Redemption 2</h3>
+                            <div class="featured-game-footer">
+                                <div class="game-icons">
+                                    <div class="platform-badge steam">
+                                        <span>Steam</span>
+                                    </div>
+                                    <div class="platform-badge rockstar">
+                                        <span>Rockstar Games</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

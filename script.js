@@ -251,7 +251,53 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             // Tıklananı aç/kapat
-            item.classList.toggle('active');
         });
     });
+});
+
+// --- YORUMLAR (REVIEWS) İÇİN OTOMATİK SONSUZ DÖNGÜ (MARQUEE) ---
+document.addEventListener('DOMContentLoaded', () => {
+    const track = document.querySelector('.reviews-track');
+    if (!track) return;
+
+    const items = Array.from(track.children);
+    if (items.length === 0) return;
+
+    // Tek bir setin (orijinal yorumların) toplam genişliğini hesapla
+    let trackWidth = 0;
+    items.forEach(item => {
+        // Elemanın genişliği + CSS'teki gap (30px)
+        trackWidth += item.offsetWidth + 30; 
+    });
+
+    if (trackWidth === 0) return;
+
+    // Ekranın en az 2 katı genişliğe ulaşacak kadar set sayısını bul
+    const minWidth = window.innerWidth * 2;
+    let requiredSets = Math.ceil(minWidth / trackWidth);
+    
+    // CSS'teki "transform: translate3d(-50%, 0, 0)" mantığının kusursuz çalışması için
+    // toplam set sayısının ÇİFT olması gerekir (en az 2).
+    if (requiredSets < 2) requiredSets = 2;
+    if (requiredSets % 2 !== 0) requiredSets++; 
+
+    // Orijinal 1 setimiz zaten var, geri kalanını klonla
+    const cloneCount = requiredSets - 1;
+
+    for (let i = 0; i < cloneCount; i++) {
+        items.forEach(item => {
+            const clone = item.cloneNode(true);
+            track.appendChild(clone);
+        });
+    }
+
+    // Sabit hız hesaplaması (Kutu sayısından bağımsız aynı hızda kayması için)
+    // Saniyede 50 piksel kayma hızı (Yavaş ve akıcı)
+    const speed = 50; 
+    const totalWidth = trackWidth * requiredSets;
+    const distanceToScroll = totalWidth / 2; // CSS %50 kaydırıyor
+    const duration = distanceToScroll / speed;
+
+    // CSS animasyon süresini dinamik olarak ata
+    track.style.animationDuration = `${duration}s`;
 });

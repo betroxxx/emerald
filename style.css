@@ -31,7 +31,8 @@ body {
     background-attachment: fixed;
 }
 
-body::before {
+/* --- ARKA PLAN KARELERİ --- */
+.home-page::before {
     content: "";
     position: absolute;
     top: 0;
@@ -124,8 +125,8 @@ body::before {
     position: relative;
 
     /* SAĞ VE SOL SOLURTMA MASKESİ */
-    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
 }
 
 .platform-grid {
@@ -141,6 +142,8 @@ body::before {
     /* ANİMASYON: 40 saniyede soldan sağa akar (Yavaşlık için süreyi artırabilirsin) */
     animation: scrollRightToLeft 40s linear infinite;
     will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 .platform-item {
@@ -174,12 +177,12 @@ body::before {
 /* --- SAĞDAN SOLA DÖNGÜ ANİMASYONU --- */
 @keyframes scrollRightToLeft {
     0% {
-        transform: translateX(0);
+        transform: translate3d(0, 0, 0);
         /* En baştan başla */
     }
 
     100% {
-        transform: translateX(calc(-50% - 12.5px));
+        transform: translate3d(calc(-50% - 12.5px), 0, 0);
     }
 }
 
@@ -2017,7 +2020,8 @@ nav ul li a:hover {
     width: 100%;
     overflow: hidden;
     padding: 40px 0;
-    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
 }
 
 .reviews-track {
@@ -2028,16 +2032,18 @@ nav ul li a:hover {
     width: max-content;
     animation: scrollReviews 30s linear infinite;
     will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 /* platform-grid ile aynı mantık: -50% tam yarıya gelince sıfırlanır, gap'in yarısı (15px) da hesaba katılır */
 @keyframes scrollReviews {
     0% {
-        transform: translateX(0);
+        transform: translate3d(0, 0, 0);
     }
 
     100% {
-        transform: translateX(calc(-50% - 15px));
+        transform: translate3d(calc(-50% - 15px), 0, 0);
     }
 }
 
@@ -2448,4 +2454,286 @@ nav ul li a:hover {
     transform: translateY(-50%);
     color: rgba(0, 229, 255, 0.5);
     pointer-events: none;
+}
+
+/* ------------------------------------------ OYUNLAR SAYFASI ÖZEL STİLLERİ ------------------------------------------ */
+
+.games-head {
+    padding-top: 150px;
+    padding-bottom: 50px;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+/* Yenilenen H1 Başlığı */
+.games-head h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: #ffffff;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    margin-bottom: 15px;
+}
+
+/* Başlık Altındaki Neon Çizgi */
+.header-line {
+    width: 80px;
+    height: 4px;
+    background: var(--primary-green);
+    margin: 0 auto 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px var(--primary-green);
+}
+
+/* Hayran Bırakıcı Filtre Paneli */
+.filter-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 50px;
+    /* Oval ve modern yapı */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.search-box-v2 {
+    position: relative;
+    flex: 1;
+    min-width: 250px;
+}
+
+.search-box-v2 i {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary-green);
+}
+
+.search-box-v2 input {
+    width: 100%;
+    padding: 12px 20px 12px 50px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    color: white;
+    font-size: 0.9rem;
+    outline: none;
+    transition: var(--transition);
+}
+
+.search-box-v2 input:focus {
+    border-color: var(--primary-green);
+    box-shadow: 0 0 10px rgba(62, 142, 96, 0.3);
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.filter-btn {
+    padding: 10px 25px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #a0aabf;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: var(--transition);
+}
+
+.filter-btn:hover {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.filter-btn.active {
+    background: var(--primary-green);
+    color: white;
+    border-color: var(--primary-green);
+    box-shadow: 0 0 15px rgba(62, 142, 96, 0.4);
+}
+
+/* Header Logo ve Link Uyumu */
+header#navbar .logo {
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Mobil uyum için ufak dokunuş */
+@media (max-width: 768px) {
+    .filter-controls {
+        border-radius: 20px;
+        flex-direction: column;
+    }
+
+    .filter-buttons {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* --- ÖNE ÇIKAN OYUNLAR STİLLERİ --- */
+.featured-games-section {
+    padding: 100px 0;
+    position: relative;
+    z-index: 10;
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 40px;
+    margin-top: -100px;
+}
+
+.games-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 50px;
+    margin-left: -280px;
+}
+
+.header-title h2 {
+    font-size: 36px;
+    font-weight: 900;
+    color: #fff;
+}
+
+.header-title h2 span {
+    color: rgb(253, 186, 2);
+    text-shadow: 0 0 15px rgba(142, 137, 62, 0.4);
+}
+
+/* Oyun Grid Yapısı */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(280px, 1fr)); 
+    gap: 20px;
+    width: 100%;
+    justify-content: center; 
+}
+
+/* Oyun Kartı Tasarımı */
+.featured-game-card {
+    width: 100%; /* Kendi sütununa yayılsın ama daralmasın */
+    min-width: 200px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.featured-game-thumb {
+    position: relative;
+    height: 380px;
+    /* Görseldeki dikey uzunluk */
+    overflow: hidden;
+}
+
+.featured-game-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-tag {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: var(--primary-green);
+    color: #fff;
+    padding: 6px 15px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 900;
+    box-shadow: 0 5px 15px rgba(62, 142, 96, 0.4);
+}
+
+.featured-game-content {
+    padding: 25px;
+}
+
+.featured-game-content h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.featured-game-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.game-icons {
+    display: flex;
+    gap: 12px;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* Hover Efektleri */
+.featured-game-card:hover {
+    transform: translateY(-15px);
+    border-color: rgb(253, 186, 2);
+    background: rgba(255, 234, 127, 0.06);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(62, 142, 96, 0.1);
+}
+
+.featured-game-card:hover .featured-game-thumb img {
+    transform: scale(1.1);
+}
+
+/* Platform Kutucuğu Genel Stili */
+.platform-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* İkon ve yazı arasındaki boşluk */
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    width: max-content;
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* -------------------------------------------------- */
+
+/* Steam'e Özel Renk ve Arka Plan */
+.platform-badge.steam {
+    background: rgba(46, 80, 143, 0.15); /* Steam mavisi tonunda şeffaf arka plan */
+    color: #b3b3b3;
+    border-color: rgba(46, 80, 143, 0.4);
+}
+
+/* -------------------------------------------------- */
+
+/* Rockstar'a Özel Renk ve Arka Plan */
+.platform-badge.rockstar {
+    background: rgba(252, 163, 17, 0.1); /* Rockstar sarısı tonunda şeffaf arka plan */
+    color: #c9c9c9;
+    border-color: rgba(252, 163, 17, 0.3);
 }
