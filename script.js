@@ -244,14 +244,42 @@ document.addEventListener('DOMContentLoaded', () => {
     const faqItems = document.querySelectorAll('.faq-item');
 
     faqItems.forEach(item => {
-        item.addEventListener('click', () => {
-            // Diğer açık olanları kapat (Opsiyonel: İstersen bu 3 satırı silebilirsin)
+        const question = item.querySelector('.faq-question');
+        if (!question) return;
+
+        question.addEventListener('click', (e) => {
+            const isActive = item.classList.contains('active');
+
+            // Diğer açık olanları kapat
             faqItems.forEach(otherItem => {
-                if (otherItem !== item) otherItem.classList.remove('active');
+                otherItem.classList.remove('active');
             });
 
-            // Tıklananı aç/kapat
+            // Tıklanan zaten aktif değilse aç
+            if (!isActive) {
+                item.classList.add('active');
+            }
         });
+    });
+
+    // --- SCROLL REVEAL (KAYDIRMA EFEKTİ) ---
+    const revealOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active-reveal');
+                // Bir kere göründükten sonra izlemeyi bırakabiliriz
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, revealOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => {
+        revealObserver.observe(el);
     });
 });
 
