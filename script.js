@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'epic games':     'epic-games',
         'ubisoft':        'ubisoft',
         'ea sports':      'ea-sports',
-        'rockstar games': 'rockstar',
+        'rockstar games': 'rockstar-games',
     };
 
     let activePlatform = null; // null = hepsi
