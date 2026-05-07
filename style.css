@@ -2964,22 +2964,42 @@ header#navbar .logo {
 
 /* -------------------------------------------------- */
 
-/* Rockstar'a Özel Renk ve Arka Plan */
-.platform-badge.rockstar {
-    background: rgba(252, 163, 17, 0.1);
-    /* Rockstar sarısı tonunda şeffaf arka plan */
-    color: #c9c9c9;
-    border-color: rgba(252, 163, 17, 0.3);
-}
-
-/* -------------------------------------------------- */
-
 /* Epic Games'e Özel Renk ve Arka Plan */
 .platform-badge.epic-games {
     background: rgba(50, 50, 50, 0.2);
     /* Epic Games koyu gri tonunda şeffaf arka plan */
     color: #e0e0e0;
     border-color: rgba(150, 150, 150, 0.3);
+}
+
+/* -------------------------------------------------- */
+
+/* Ubisoft'a Özel Renk ve Arka Plan */
+.platform-badge.ubisoft {
+    background: rgba(106, 163, 255, 0.15);
+    /* Ubisoft mavi tonunda şeffaf arka plan */
+    color: #b3b3b3;
+    border-color: rgba(52, 111, 207, 0.4);
+}
+
+/* -------------------------------------------------- */
+
+/* EA Sports'a Özel Renk ve Arka Plan */
+.platform-badge.ea-sports {
+    background: rgba(255, 26, 26, 0.15);
+    /* EA Sports kırmızı tonunda şeffaf arka plan */
+    color: #b3b3b3;
+    border-color: rgba(156, 55, 55, 0.4);
+}
+
+/* -------------------------------------------------- */
+
+/* Rockstar'a Özel Renk ve Arka Plan */
+.platform-badge.rockstar {
+    background: rgba(252, 163, 17, 0.1);
+    /* Rockstar sarısı tonunda şeffaf arka plan */
+    color: #c9c9c9;
+    border-color: rgba(252, 163, 17, 0.3);
 }
 
 /* -------------------------------------------------- */

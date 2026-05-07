@@ -282,37 +282,64 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(el);
     });
 
-    // --- OYUN ARA FONKSİYONU (oyunlar.html) ---
+    // --- OYUN ARA + PLATFORM FİLTRE FONKSİYONU (oyunlar.html) ---
     const searchInput = document.querySelector('.search-box-v2 input');
-    const searchIcon = document.querySelector('.search-box-v2 i');
-    const gameCards = document.querySelectorAll('.game-card');
+    const searchIcon  = document.querySelector('.search-box-v2 i');
+    const gameCards   = document.querySelectorAll('.game-card');
+    const filterBtns  = document.querySelectorAll('.filter-btn');
 
+    // Buton metni → platform-badge CSS class eşlemesi
+    const platformMap = {
+        'steam':          'steam',
+        'epic games':     'epic-games',
+        'ubisoft':        'ubisoft',
+        'ea sports':      'ea-sports',
+        'rockstar games': 'rockstar',
+    };
+
+    let activePlatform = null; // null = hepsi
+
+    // Kart görünürlüğünü hem arama hem platforma göre güncelle
+    const applyFilters = () => {
+        const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+
+        gameCards.forEach(card => {
+            const title = card.querySelector('.game-content h3');
+            const titleText = title ? title.textContent.toLowerCase() : '';
+
+            // Metin filtresi
+            const matchesSearch = titleText.includes(query);
+
+            // Platform filtresi
+            let matchesPlatform = true;
+            if (activePlatform) {
+                matchesPlatform = card.querySelector(`.platform-badge.${activePlatform}`) !== null;
+            }
+
+            card.style.display = (matchesSearch && matchesPlatform) ? '' : 'none';
+        });
+    };
+
+    // Platform buton tıklaması
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Aktif class'ı taşı
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const label = btn.textContent.trim().toLowerCase();
+            activePlatform = platformMap[label] || null; // "Hepsi" için null
+
+            applyFilters();
+        });
+    });
+
+    // Arama kutusu
     if (searchInput) {
-        const filterGames = () => {
-            const query = searchInput.value.toLowerCase().trim();
-            
-            gameCards.forEach(card => {
-                const title = card.querySelector('.game-content h3');
-                if (title) {
-                    const titleText = title.textContent.toLowerCase();
-                    if (titleText.includes(query)) {
-                        card.style.display = ''; // Grid yapısını bozmamak için boş bırakıyoruz
-                        card.style.opacity = '1';
-                        card.style.transform = 'scale(1)';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                }
-            });
-        };
-
-        // Yazarken anlık filtreleme
-        searchInput.addEventListener('input', filterGames);
-
-        // İkon tıklandığında da çalışsın
+        searchInput.addEventListener('input', applyFilters);
         if (searchIcon) {
             searchIcon.style.cursor = 'pointer';
-            searchIcon.addEventListener('click', filterGames);
+            searchIcon.addEventListener('click', applyFilters);
         }
     }
 });
