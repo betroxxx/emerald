@@ -281,6 +281,40 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.reveal').forEach(el => {
         revealObserver.observe(el);
     });
+
+    // --- OYUN ARA FONKSİYONU (oyunlar.html) ---
+    const searchInput = document.querySelector('.search-box-v2 input');
+    const searchIcon = document.querySelector('.search-box-v2 i');
+    const gameCards = document.querySelectorAll('.game-card');
+
+    if (searchInput) {
+        const filterGames = () => {
+            const query = searchInput.value.toLowerCase().trim();
+            
+            gameCards.forEach(card => {
+                const title = card.querySelector('.game-content h3');
+                if (title) {
+                    const titleText = title.textContent.toLowerCase();
+                    if (titleText.includes(query)) {
+                        card.style.display = ''; // Grid yapısını bozmamak için boş bırakıyoruz
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        };
+
+        // Yazarken anlık filtreleme
+        searchInput.addEventListener('input', filterGames);
+
+        // İkon tıklandığında da çalışsın
+        if (searchIcon) {
+            searchIcon.style.cursor = 'pointer';
+            searchIcon.addEventListener('click', filterGames);
+        }
+    }
 });
 
 // --- YORUMLAR (REVIEWS) İÇİN OTOMATİK SONSUZ DÖNGÜ (MARQUEE) ---

@@ -1948,6 +1948,7 @@ nav ul li a.active {
     color: #94a3b8;
     background: rgba(0, 0, 0, 0.2);
 }
+
 /* --- REVEAL ANİMASYONU SİSTEMİ --- */
 .reveal {
     opacity: 0;
@@ -2503,8 +2504,7 @@ nav ul li a.active {
 /* ------------------------------------------ OYUNLAR SAYFASI ÖZEL STİLLERİ ------------------------------------------ */
 
 .games-head {
-    padding-top: 150px;
-    padding-bottom: 50px;
+    padding-bottom: 150px;
     text-align: center;
     position: relative;
     z-index: 10;
@@ -2630,7 +2630,7 @@ header#navbar .logo {
 
 /* --- ÖNE ÇIKAN OYUNLAR STİLLERİ --- */
 .featured-games-section {
-    padding: 100px 0;
+    padding: 290px 0;
     position: relative;
     z-index: 10;
 }
@@ -2642,16 +2642,15 @@ header#navbar .logo {
     margin-top: -100px;
 }
 
-.games-header {
+.featured-games-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: flex-end;
-    margin-bottom: 50px;
-    margin-left: -280px;
+    margin-bottom: 60px;
 }
 
 .header-title h2 {
-    font-size: 36px;
+    font-size: 50px;
     font-weight: 900;
     color: #fff;
 }
@@ -2662,17 +2661,18 @@ header#navbar .logo {
 }
 
 /* Oyun Grid Yapısı */
-.games-grid {
+.featured-games-grid {
     display: grid;
-    grid-template-columns: repeat(6, minmax(280px, 1fr)); 
+    grid-template-columns: repeat(6, minmax(280px, 1fr));
     gap: 20px;
     width: 100%;
-    justify-content: center; 
+    justify-content: center;
 }
 
 /* Oyun Kartı Tasarımı */
 .featured-game-card {
-    width: 100%; /* Kendi sütununa yayılsın ama daralmasın */
+    width: 100%;
+    /* Kendi sütununa yayılsın ama daralmasın */
     min-width: 200px;
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(5px);
@@ -2735,9 +2735,11 @@ header#navbar .logo {
     font-size: 18px;
     font-weight: 700;
     margin-bottom: 20px;
-    white-space: normal;
-    overflow: visible;         /* Taşmayı gizlemez */
-    text-overflow: clip;       /* Üç noktayı kaldırır */
+    white-space: nowrap;
+    overflow: visible;
+    /* Taşmayı gizlemez */
+    text-overflow: clip;
+    /* Üç noktayı kaldırır */
     display: block;
 }
 
@@ -2747,7 +2749,7 @@ header#navbar .logo {
     align-items: center;
 }
 
-.game-icons {
+.featured-game-icons {
     display: flex;
     gap: 12px;
     font-size: 20px;
@@ -2767,10 +2769,11 @@ header#navbar .logo {
 }
 
 /* Platform Kutucuğu Genel Stili */
-.platform-badge {
+.featured-platform-badge {
     display: flex;
     align-items: center;
-    gap: 8px; /* İkon ve yazı arasındaki boşluk */
+    gap: 8px;
+    /* İkon ve yazı arasındaki boşluk */
     padding: 4px 8px;
     border-radius: 8px;
     font-size: 13px;
@@ -2786,8 +2789,175 @@ header#navbar .logo {
 /* -------------------------------------------------- */
 
 /* Steam'e Özel Renk ve Arka Plan */
+.featured-platform-badge.steam {
+    background: rgba(46, 80, 143, 0.15);
+    /* Steam mavisi tonunda şeffaf arka plan */
+    color: #b3b3b3;
+    border-color: rgba(46, 80, 143, 0.4);
+}
+
+/* -------------------------------------------------- */
+
+/* Rockstar'a Özel Renk ve Arka Plan */
+.featured-platform-badge.rockstar {
+    background: rgba(252, 163, 17, 0.1);
+    /* Rockstar sarısı tonunda şeffaf arka plan */
+    color: #c9c9c9;
+    border-color: rgba(252, 163, 17, 0.3);
+}
+
+/* -------------------------------------------------- */
+
+/* Epic Games'e Özel Renk ve Arka Plan */
+.featured-platform-badge.epic-games {
+    background: rgba(50, 50, 50, 0.2);
+    /* Epic Games koyu gri tonunda şeffaf arka plan */
+    color: #e0e0e0;
+    border-color: rgba(150, 150, 150, 0.3);
+}
+
+/* -------------------------------------------------- */
+
+/* --- GENEL AYRAÇ (DIVIDER) --- */
+.section-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 60px 0 40px;
+    margin-bottom: -200px;
+}
+
+/* =================================================================================================== */
+/* --------------------------------------- TÜM OYUNLAR BÖLÜMÜ ---------------------------------------- */
+/* =================================================================================================== */
+
+.all-games-section {
+    padding: 0 0 100px;
+    position: relative;
+    z-index: 10;
+}
+
+/* Tüm Oyunlar Grid — 8 sütun */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(8, minmax(200px, 1fr));
+    gap: 16px;
+
+    width: 100%;
+    margin: 0 auto;
+
+    justify-content: center;
+}
+
+/* Kart */
+.game-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    overflow: hidden;
+    transition: var(--transition);
+    width: 100%;
+}
+
+.game-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-green);
+    background: rgba(62, 142, 96, 0.06);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(62, 142, 96, 0.1);
+}
+
+/* Thumbnail */
+.game-thumb {
+    position: relative;
+    height: 270px;
+    overflow: hidden;
+}
+
+.game-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.game-card:hover .game-thumb img {
+    transform: scale(1.1);
+}
+
+/* İçerik alanı */
+.game-content {
+    padding: 18px;
+}
+
+.game-content h3 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    color: #fff;
+}
+
+/* Footer */
+.game-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Platform ikonları */
+.game-icons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: nowrap;
+}
+
+/* Responsive — küçük ekranlarda 4 sütun */
+@media (max-width: 1400px) {
+    .games-grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+@media (max-width: 1024px) {
+    .games-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .games-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Platform Kutucuğu Genel Stili */
+.platform-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* İkon ve yazı arasındaki boşluk */
+    padding: 2px 6px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    width: max-content;
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* -------------------------------------------------- */
+
+/* Steam'e Özel Renk ve Arka Plan */
 .platform-badge.steam {
-    background: rgba(46, 80, 143, 0.15); /* Steam mavisi tonunda şeffaf arka plan */
+    background: rgba(46, 80, 143, 0.15);
+    /* Steam mavisi tonunda şeffaf arka plan */
     color: #b3b3b3;
     border-color: rgba(46, 80, 143, 0.4);
 }
@@ -2796,7 +2966,20 @@ header#navbar .logo {
 
 /* Rockstar'a Özel Renk ve Arka Plan */
 .platform-badge.rockstar {
-    background: rgba(252, 163, 17, 0.1); /* Rockstar sarısı tonunda şeffaf arka plan */
+    background: rgba(252, 163, 17, 0.1);
+    /* Rockstar sarısı tonunda şeffaf arka plan */
     color: #c9c9c9;
     border-color: rgba(252, 163, 17, 0.3);
 }
+
+/* -------------------------------------------------- */
+
+/* Epic Games'e Özel Renk ve Arka Plan */
+.platform-badge.epic-games {
+    background: rgba(50, 50, 50, 0.2);
+    /* Epic Games koyu gri tonunda şeffaf arka plan */
+    color: #e0e0e0;
+    border-color: rgba(150, 150, 150, 0.3);
+}
+
+/* -------------------------------------------------- */
