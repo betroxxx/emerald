@@ -35,32 +35,32 @@ class Star {
     }
 
     reset() {
-    // Ekranın merkezini baz alıyoruz
-    this.centerX = canvas.width / 2;
-    this.centerY = canvas.height / 2;
-    
-    // MERKEZDE TOPLANMAYI ENGELLEYEN AYAR:
-    // Math.random() yanına eklediğimiz "+ 100", merkezde 100px'lik temiz bir daire bırakır.
-    this.radius = (Math.random() * (canvas.width > canvas.height ? canvas.width : canvas.height)) + 100;
-    
-    // Başlangıç açısı (0 - 360 derece arası)
-    this.angle = Math.random() * Math.PI * 2;
-    
-    // Dönüş hızı (Senin sevdiğin ilk hız değerleri)
-    this.speed = (Math.random() * 0.002 + 0.0005);
-    
-    // Yıldız boyutu
-    this.size = Math.random() * 1.5;
-    
-    // Parlama değişkenleri
-    this.opacity = Math.random();
-    this.glowSpeed = Math.random() * 0.02 + 0.01;
-}
+        // Ekranın merkezini baz alıyoruz
+        this.centerX = canvas.width / 2;
+        this.centerY = canvas.height / 2;
+
+        // MERKEZDE TOPLANMAYI ENGELLEYEN AYAR:
+        // Math.random() yanına eklediğimiz "+ 100", merkezde 100px'lik temiz bir daire bırakır.
+        this.radius = (Math.random() * (canvas.width > canvas.height ? canvas.width : canvas.height)) + 100;
+
+        // Başlangıç açısı (0 - 360 derece arası)
+        this.angle = Math.random() * Math.PI * 2;
+
+        // Dönüş hızı (Senin sevdiğin ilk hız değerleri)
+        this.speed = (Math.random() * 0.002 + 0.0005);
+
+        // Yıldız boyutu
+        this.size = Math.random() * 1.5;
+
+        // Parlama değişkenleri
+        this.opacity = Math.random();
+        this.glowSpeed = Math.random() * 0.02 + 0.01;
+    }
 
     update() {
         // Açı sürekli artarak dairesel hareket sağlar
         this.angle += this.speed;
-        
+
         // Parlama efekti (Nefes alma gibi sönüp yanma)
         this.opacity += this.glowSpeed;
         if (this.opacity > 1 || this.opacity < 0.2) {
@@ -75,15 +75,15 @@ class Star {
 
         ctx.beginPath();
         ctx.arc(x, y, this.size, 0, Math.PI * 2);
-        
+
         // Parlayan yıldızlar için shadow (gölge) efekti
         ctx.shadowBlur = this.size * 4;
         ctx.shadowColor = "white";
-        
+
         // Yeşil temaya uygun çok hafif yeşilimsi beyaz
         ctx.fillStyle = `rgba(220, 255, 230, ${Math.abs(this.opacity)})`;
         ctx.fill();
-        
+
         // Diğer çizimleri etkilememesi için gölgeyi sıfırlıyoruz
         ctx.shadowBlur = 0;
     }
@@ -99,7 +99,7 @@ function createStars() {
 function animate() {
     // Arka planı temizle ama hafif bir iz bırak (motion blur istersen temizleme rengini opacity ile ver)
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
+
     stars.forEach(star => {
         star.update();
         star.draw();
@@ -144,7 +144,7 @@ const globalObserver = new IntersectionObserver((entries) => {
             if (entry.target.classList.contains('process-stepper')) {
                 setTimeout(() => {
                     entry.target.classList.add('animate-start');
-                }, 1000); 
+                }, 1000);
                 // unobserve satırını sildik, döngü için izlemeye devam
             }
             if (entry.target.classList.contains('stats-counter')) {
@@ -162,7 +162,7 @@ document.querySelectorAll('.process-stepper').forEach(el => globalObserver.obser
 
 // --- Advantage Card 3D Tilt Efekti ---
 (function () {
-    const MAX_TILT   = 12;   // maksimum eğim (derece)
+    const MAX_TILT = 12;   // maksimum eğim (derece)
     const PERSPECTIVE = 900; // perspektif derinliği (px)
 
     document.querySelectorAll('.advantage-card').forEach(card => {
@@ -174,17 +174,17 @@ document.querySelectorAll('.process-stepper').forEach(el => globalObserver.obser
 
         // Fare kart üzerindeyken: imlecin bulunduğu köşeye doğru eğil
         card.addEventListener('mousemove', (e) => {
-            const rect    = card.getBoundingClientRect();
-            const x       = e.clientX - rect.left;          // 0 → kart genişliği
-            const y       = e.clientY - rect.top;           // 0 → kart yüksekliği
-            const cx      = rect.width  / 2;
-            const cy      = rect.height / 2;
-            const deltaX  = (x - cx) / cx;  // -1 (sol) … +1 (sağ)
-            const deltaY  = (y - cy) / cy;  // -1 (üst) … +1 (alt)
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;          // 0 → kart genişliği
+            const y = e.clientY - rect.top;           // 0 → kart yüksekliği
+            const cx = rect.width / 2;
+            const cy = rect.height / 2;
+            const deltaX = (x - cx) / cx;  // -1 (sol) … +1 (sağ)
+            const deltaY = (y - cy) / cy;  // -1 (üst) … +1 (alt)
 
             // deltaX > 0 → sağda → sağ taraf ileri gelsin (rotateY negatif)
             // deltaY > 0 → altta → alt taraf ileri gelsin (rotateX pozitif)
-            const rotateY =  deltaX * MAX_TILT;
+            const rotateY = deltaX * MAX_TILT;
             const rotateX = -deltaY * MAX_TILT;
 
             card.style.transform =
@@ -194,7 +194,7 @@ document.querySelectorAll('.process-stepper').forEach(el => globalObserver.obser
         // Fare karttan çıkınca: yumuşak geri dönüş
         card.addEventListener('mouseleave', () => {
             card.style.transition = 'transform 0.55s cubic-bezier(0.23, 1, 0.32, 1), border-color 0.35s ease, box-shadow 0.35s ease, background 0.35s ease';
-            card.style.transform  = 'perspective(900px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            card.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
         });
     });
 })();
@@ -207,20 +207,20 @@ let dy = 0; // Hedef konum
 // AYARLAR: Buradaki rakamlarla oynayarak kendine göre optimize edebilirsin
 const scrollSpeed = 0.085;   // Yumuşaklık (Değer küçüldükçe hareket daha "ağır" ve pürüzsüz olur)
 const sensitivity = 0.7;    // HASSASİYET: 1'den küçükse daha az kayar, 1'den büyükse daha çok kayar. 
-                            // 0.4 veya 0.5 genelde en doğal hissi verir.
+// 0.4 veya 0.5 genelde en doğal hissi verir.
 
 window.addEventListener('wheel', (e) => {
     const isScrollable = e.target.closest('textarea') || e.target.closest('.scroll-box');
     if (isScrollable) return;
 
     if (Math.abs(e.deltaY) > 0) {
-        if (e.ctrlKey) return; 
-        
-        e.preventDefault(); 
-        
+        if (e.ctrlKey) return;
+
+        e.preventDefault();
+
         // e.deltaY değerini hassasiyet ile çarparak "ne kadar" gideceğini kontrol ediyoruz
         dy += e.deltaY * sensitivity;
-        
+
         // Sayfa sınırlarını aşmasını engelle
         const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
         dy = Math.max(0, Math.min(dy, maxScroll));
@@ -282,19 +282,53 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(el);
     });
 
+    // --- OYUN KARTLARI TEK TEK ÇIKIŞ ANİMASYONU (oyunlar.html) ---
+    const allGameCards = document.querySelectorAll('.games-grid .game-card');
+    if (allGameCards.length > 0) {
+        const CARDS_PER_ROW = 8;
+        const CARD_DELAY = 70;    // Aynı satırdaki kartlar arası (ms)
+        const ROW_DELAY = 600;    // Satırlar arası ek gecikme (ms)
+
+        // Tüm kartları cascade şeklinde göster
+        function revealAllCards() {
+            allGameCards.forEach((card, i) => {
+                const row = Math.floor(i / CARDS_PER_ROW);
+                const col = i % CARDS_PER_ROW;
+                const delay = (row * ROW_DELAY) + (col * CARD_DELAY);
+
+                setTimeout(() => {
+                    card.style.transitionDelay = '0s';
+                    card.classList.add('card-visible');
+                }, delay);
+            });
+        }
+
+        // İlk kart ekrana girdiğinde tüm kartları tetikle
+        const triggerObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    revealAllCards();
+                    triggerObserver.disconnect(); // Tek seferlik
+                }
+            });
+        }, { threshold: 0.05 });
+
+        triggerObserver.observe(allGameCards[0]);
+    }
+
     // --- OYUN ARA + PLATFORM FİLTRE FONKSİYONU (oyunlar.html) ---
     const searchInput = document.querySelector('.search-box-v2 input');
-    const searchIcon  = document.querySelector('.search-box-v2 i');
-    const gameCards   = document.querySelectorAll('.game-card');
-    const filterBtns  = document.querySelectorAll('.filter-btn');
+    const searchIcon = document.querySelector('.search-box-v2 i');
+    const gameCards = document.querySelectorAll('.game-card');
+    const filterBtns = document.querySelectorAll('.filter-btn');
 
     // Buton metni → platform-badge CSS class eşlemesi
     const platformMap = {
-        'steam':          'steam',
-        'epic games':     'epic-games',
-        'ubisoft':        'ubisoft',
-        'ea sports':      'ea-sports',
-        'rockstar games': 'rockstar-games',
+        'steam': 'steam',
+        'epic games': 'epic-games',
+        'ubisoft': 'ubisoft',
+        'ea sports': 'ea-sports',
+        'rockstar games': 'rockstar',
     };
 
     let activePlatform = null; // null = hepsi
@@ -356,7 +390,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let trackWidth = 0;
     items.forEach(item => {
         // Elemanın genişliği + CSS'teki gap (30px)
-        trackWidth += item.offsetWidth + 30; 
+        trackWidth += item.offsetWidth + 30;
     });
 
     if (trackWidth === 0) return;
@@ -364,11 +398,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ekranın en az 2 katı genişliğe ulaşacak kadar set sayısını bul
     const minWidth = window.innerWidth * 2;
     let requiredSets = Math.ceil(minWidth / trackWidth);
-    
+
     // CSS'teki "transform: translate3d(-50%, 0, 0)" mantığının kusursuz çalışması için
     // toplam set sayısının ÇİFT olması gerekir (en az 2).
     if (requiredSets < 2) requiredSets = 2;
-    if (requiredSets % 2 !== 0) requiredSets++; 
+    if (requiredSets % 2 !== 0) requiredSets++;
 
     // Orijinal 1 setimiz zaten var, geri kalanını klonla
     const cloneCount = requiredSets - 1;
@@ -382,7 +416,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Sabit hız hesaplaması (Kutu sayısından bağımsız aynı hızda kayması için)
     // Saniyede 50 piksel kayma hızı (Yavaş ve akıcı)
-    const speed = 50; 
+    const speed = 50;
     const totalWidth = trackWidth * requiredSets;
     const distanceToScroll = totalWidth / 2; // CSS %50 kaydırıyor
     const duration = distanceToScroll / speed;
