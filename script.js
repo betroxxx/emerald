@@ -1,7 +1,13 @@
+// Sayfa yenilendiğinde en başa dön (Özellikle oyunlar sayfası için)
+if (window.location.pathname.includes('oyunlar.html')) {
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+}
+
 // Sayfa kaydırıldığında Navbar stilini değiştir
 const navbar = document.getElementById('navbar');
-
-
 
 window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
