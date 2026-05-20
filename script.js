@@ -430,3 +430,244 @@ document.addEventListener('DOMContentLoaded', () => {
     // CSS animasyon süresini dinamik olarak ata
     track.style.animationDuration = `${duration}s`;
 });
+
+// --- DOĞRULAMA SAYFASI (dogrulama.html) ---
+document.addEventListener('DOMContentLoaded', () => {
+    const verifyInput = document.getElementById('verify-input');
+    const verifyBtn   = document.getElementById('verify-btn');
+    const verifyResult = document.getElementById('verify-result');
+    const faqToggle   = document.getElementById('faqToggle');
+    const faqList     = document.getElementById('faqList');
+
+    // --- Anahtar Formatı: ES-XXXXXX-XXXXXX ---
+    let previousValue = "";
+    if (verifyInput) {
+        verifyInput.addEventListener('input', () => {
+            let val = verifyInput.value;
+            let isDeleting = val.length < previousValue.length;
+            
+            // Sadece izin verilen karakterleri temizle ve formatla
+            let cleaned = val.toUpperCase().replace(/[^A-Z0-9]/g, '');
+            
+            // Formatı oluştur
+            let formatted = cleaned;
+            if (cleaned.length > 2) {
+                let first = cleaned.slice(0, 2);
+                let middle = cleaned.slice(2, 8);
+                formatted = first + '-' + middle;
+                
+                if (cleaned.length > 8 || (cleaned.length === 8 && !isDeleting)) {
+                    let end = cleaned.slice(8, 14);
+                    formatted += '-' + end;
+                }
+            } else if (cleaned.length === 2 && !isDeleting) {
+                formatted = cleaned + '-';
+            }
+            
+            // Cursor/Seçim pozisyonunu koru
+            let selectionStart = verifyInput.selectionStart;
+            let selectionEnd = verifyInput.selectionEnd;
+            
+            if (verifyInput.value !== formatted) {
+                verifyInput.value = formatted;
+                
+                let diff = formatted.length - val.length;
+                if (diff > 0) {
+                    verifyInput.setSelectionRange(selectionStart + diff, selectionEnd + diff);
+                } else {
+                    verifyInput.setSelectionRange(selectionStart, selectionEnd);
+                }
+            }
+            
+            previousValue = formatted;
+
+            // Butonu aktif/pasif yap
+            const isValid = /^ES-[A-Z0-9]{6}-[A-Z0-9]{6}$/.test(formatted);
+            verifyBtn.disabled = !isValid;
+            verifyBtn.classList.toggle('active', isValid);
+
+            // Önceki sonucu temizle
+            if (verifyResult) {
+                verifyResult.style.display = 'none';
+                verifyResult.className = 'verify-result';
+            }
+        });
+    }
+
+    // --- Doğrula Butonu ---
+    if (verifyBtn) {
+        verifyBtn.addEventListener('click', async () => {
+            if (verifyBtn.disabled) return;
+            const key = verifyInput.value.trim();
+
+            verifyBtn.disabled = true;
+            verifyBtn.classList.remove('active');
+            verifyBtn.textContent = 'Kontrol ediliyor...';
+
+            // Simülasyon (gerçek API yokken test amaçlı)
+            await new Promise(r => setTimeout(r, 1200));
+
+            verifyResult.style.display = 'block';
+            // Demo: her zaman geçersiz göster (gerçek backend bağlandığında değiştirilecek)
+            verifyResult.className = 'verify-result error';
+            verifyResult.innerHTML = '<i class="fa-solid fa-circle-xmark"></i> Anahtar geçersiz veya daha önce kullanılmış.';
+
+            // Butonu sıfırla
+            verifyBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg> Anahtarı Doğrula`;
+            verifyBtn.disabled = false;
+            verifyBtn.classList.add('active');
+        });
+    }
+
+    // --- SSS Accordion ---
+    if (faqToggle && faqList) {
+        faqToggle.addEventListener('click', () => {
+            const isOpen = faqList.classList.contains('open');
+            faqList.classList.toggle('open', !isOpen);
+            faqToggle.classList.toggle('open', !isOpen);
+        });
+    }
+});
+
+// --- CLOUDFLARE TURNSTILE GLOBAL CALLBAKLERİ ---
+window.onTurnstileSuccess = function(token) {
+    if (typeof window.setTurnstileVerified === 'function') {
+        window.setTurnstileVerified(true);
+    }
+};
+
+window.onTurnstileExpired = function() {
+    if (typeof window.setTurnstileVerified === 'function') {
+        window.setTurnstileVerified(false);
+    }
+};
+
+window.onTurnstileError = function() {
+    if (typeof window.setTurnstileVerified === 'function') {
+        window.setTurnstileVerified(false);
+    }
+};
+
+// --- GUARD KOD AL SAYFASI (kodal.html) ---
+document.addEventListener('DOMContentLoaded', () => {
+    const gameSelect = document.getElementById('game-select');
+    if (!gameSelect) return; // Sadece kodal.html sayfasında çalışması için
+
+    const guardBtn = document.getElementById('guard-btn');
+    const guardForm = document.getElementById('guardForm');
+    const guardResult = document.getElementById('guard-result');
+    const generatedCode = document.getElementById('generated-code');
+    const copyCodeBtn = document.getElementById('copy-code-btn');
+    const countdownText = document.getElementById('countdown-text');
+    const progressBar = document.getElementById('guard-progress-bar');
+    const instructionsToggle = document.getElementById('instructionsToggle');
+    const instructionsList = document.getElementById('instructionsList');
+
+    let isTurnstileVerified = false;
+    let countdownInterval = null;
+
+    // Global turnstile doğrulama durumunu güncelleyen köprü
+    window.setTurnstileVerified = (verified) => {
+        isTurnstileVerified = verified;
+        checkFormValidity();
+    };
+
+    // --- Form Doğrulama Kontrolü ---
+    gameSelect.addEventListener('change', () => {
+        checkFormValidity();
+    });
+
+    const checkFormValidity = () => {
+        const isGameSelected = gameSelect.value !== '';
+        const isValid = isGameSelected && isTurnstileVerified;
+        guardBtn.disabled = !isValid;
+    };
+
+    // --- Guard Kodu Oluştur ve Zamanlayıcıyı Başlat ---
+    guardBtn.addEventListener('click', () => {
+        if (guardBtn.disabled) return;
+
+        // 6 haneli rastgele kod üret (Örn: "293 841")
+        const codePart1 = Math.floor(100 + Math.random() * 900);
+        const codePart2 = Math.floor(100 + Math.random() * 900);
+        const code = `${codePart1} ${codePart2}`;
+
+        // Kod ekranını göster, formu gizle
+        guardForm.style.display = 'none';
+        guardResult.style.display = 'block';
+        generatedCode.textContent = code;
+
+        // 5 dakikalık (300 saniye) geri sayımı başlat
+        startCountdown(300);
+    });
+
+    const startCountdown = (duration) => {
+        clearInterval(countdownInterval);
+        let timeRemaining = duration;
+
+        const updateTimer = () => {
+            const minutes = Math.floor(timeRemaining / 60);
+            const seconds = timeRemaining % 60;
+            const formattedMinutes = minutes.toString().padStart(2, '0');
+            const formattedSeconds = seconds.toString().padStart(2, '0');
+            
+            countdownText.textContent = `${formattedMinutes}:${formattedSeconds}`;
+            
+            // Progress Bar genişlik yüzdesi
+            const percentage = (timeRemaining / duration) * 100;
+            progressBar.style.width = `${percentage}%`;
+
+            if (timeRemaining <= 0) {
+                clearInterval(countdownInterval);
+                // Süre dolduğunda kodu geçersiz yap ve formu sıfırla
+                generatedCode.innerHTML = '<span style="color: #ff7070; font-size: 20px; font-family: Montserrat;">Süre Doldu!</span>';
+                copyCodeBtn.disabled = true;
+                
+                setTimeout(() => {
+                    // Sayfayı eski haline getir
+                    guardResult.style.display = 'none';
+                    guardForm.style.display = 'flex';
+                    gameSelect.value = '';
+                    guardBtn.disabled = true;
+                    copyCodeBtn.disabled = false;
+                    
+                    // Turnstile doğrulamasını sıfırla
+                    isTurnstileVerified = false;
+                    if (window.turnstile) {
+                        window.turnstile.reset();
+                    }
+                }, 3000);
+            }
+            timeRemaining--;
+        };
+
+        updateTimer();
+        countdownInterval = setInterval(updateTimer, 1000);
+    };
+
+    // --- Kodu Kopyala ---
+    copyCodeBtn.addEventListener('click', () => {
+        const textToCopy = generatedCode.textContent;
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            // Buton ikonu ve başlığı başarılı bildirimiyle güncelle
+            const originalHTML = copyCodeBtn.innerHTML;
+            copyCodeBtn.innerHTML = '<i class="fa-solid fa-check" style="color: #5dcb87;"></i>';
+            copyCodeBtn.title = 'Kopyalandı!';
+            setTimeout(() => {
+                copyCodeBtn.innerHTML = originalHTML;
+                copyCodeBtn.title = 'Kodu Kopyala';
+            }, 1500);
+        }).catch(err => {
+            console.error('Kopyalama hatası: ', err);
+        });
+    });
+
+    // --- Kullanım Talimatları Accordion ---
+    if (instructionsToggle && instructionsList) {
+        instructionsToggle.addEventListener('click', () => {
+            const isOpen = instructionsList.classList.contains('open');
+            instructionsList.classList.toggle('open', !isOpen);
+            instructionsToggle.classList.toggle('open', !isOpen);
+        });
+    }
+});

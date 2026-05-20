@@ -3016,3 +3016,573 @@ header#navbar .logo {
 }
 
 /* -------------------------------------------------- */
+
+/* =====================================================
+   DOĞRULAMA SAYFASI STİLLERİ
+   ===================================================== */
+
+.verify-page-main {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 24px 80px;
+}
+
+.verify-container {
+    width: 100%;
+    max-width: 480px;
+}
+
+.verify-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #f5a623;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+}
+
+.verify-title {
+    font-size: 2.6rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin: 0 0 12px;
+    letter-spacing: -1px;
+    line-height: 1.1;
+}
+
+.verify-subtitle {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.45);
+    line-height: 1.6;
+    margin: 0 0 32px;
+    max-width: 400px;
+}
+
+.verify-info-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0, 238, 127, 0.057);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(3px);
+    border-radius: 10px;
+    padding: 13px 18px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 28px;
+}
+
+.verify-info-box strong {
+    color: rgba(255, 255, 255, 0.75);
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.verify-info-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.verify-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 36px;
+}
+
+.verify-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.35);
+    text-transform: uppercase;
+}
+
+.verify-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-size: 15px;
+    font-family: 'Courier New', monospace;
+    color: #fff;
+    letter-spacing: 2px;
+    outline: none;
+    transition: border-color 0.3s ease, background 0.3s ease;
+    box-sizing: border-box;
+}
+
+.verify-input::placeholder {
+    color: rgba(255, 255, 255, 0.2);
+    letter-spacing: 1px;
+}
+
+.verify-input:focus {
+    border-color: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.verify-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 24px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: not-allowed;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.verify-btn svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+.verify-btn.active {
+    background: linear-gradient(135deg, #3e8e60, #2d7a4f);
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(62, 142, 96, 0.3);
+}
+
+.verify-btn.active:hover {
+    background: linear-gradient(135deg, #4aab72, #37905d);
+    box-shadow: 0 0 30px rgba(62, 142, 96, 0.5);
+    transform: translateY(-1px);
+}
+
+.verify-result {
+    padding: 14px 18px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 4px;
+}
+
+.verify-result i {
+    margin-right: 6px;
+}
+
+.verify-result.success {
+    background: rgba(62, 142, 96, 0.15);
+    border: 1px solid rgba(62, 142, 96, 0.3);
+    color: #5dcb87;
+}
+
+.verify-result.error {
+    background: rgba(255, 80, 80, 0.1);
+    border: 1px solid rgba(255, 80, 80, 0.25);
+    color: #ff7070;
+}
+
+.verify-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+    margin-bottom: 28px;
+}
+
+.verify-faq-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 13px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 20px;
+    transition: color 0.2s ease;
+    width: 100%;
+}
+
+.verify-faq-toggle:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.verify-faq-toggle .faq-arrow {
+    margin-top: 6px;
+    transition: transform 0.3s ease;
+}
+
+.verify-faq-toggle.open .faq-arrow {
+    margin-top: -0.3px;
+    transform: rotate(90deg);
+}
+
+.verify-faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.verify-faq-list.open {
+    max-height: 600px;
+}
+
+.verify-faq-item h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0 0 8px;
+}
+
+.verify-faq-item p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.4);
+    line-height: 1.65;
+    margin: 0;
+}
+
+/* =====================================================
+   GUARD KOD AL SAYFASI EKSTRA STİLLERİ
+   ===================================================== */
+
+.guard-badge {
+    color: #3e8e60 !important;
+}
+
+.guard-alert-box {
+    background: rgba(245, 166, 35, 0.04) !important;
+    border: 1px solid rgba(245, 166, 35, 0.15) !important;
+    color: #f5a623 !important;
+}
+
+.guard-alert-box strong {
+    color: #ffb74d;
+    font-weight: 700;
+}
+
+.guard-alert-box i {
+    font-size: 16px;
+    margin-right: 2px;
+}
+
+/* Custom Select Dropdown */
+.guard-select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.guard-select {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 16px 45px 16px 20px;
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.guard-select:focus {
+    border-color: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.07);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+}
+
+.guard-select option {
+    background: #0f1524;
+    color: #fff;
+    padding: 10px;
+}
+
+.guard-select-wrapper .select-arrow {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.4);
+    transition: color 0.3s ease;
+}
+
+.guard-select-wrapper:hover .select-arrow {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.guard-select-wrapper .select-arrow svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* Turnstile Box Kapsayıcı */
+.turnstile-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+}
+
+/* Turnstile Widget */
+.turnstile-wrapper {
+    width: 300px;
+    height: 65px;
+    background: #0d111b;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.turnstile-status {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.turnstile-status span {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+}
+
+/* Spinner Loader */
+.turnstile-loader {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.turnstile-loader.success-active {
+    display: none;
+}
+
+.turnstile-loader .spinner-dot {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #3e8e60;
+    border-radius: 50%;
+    animation: spinner-fade 1.2s infinite linear;
+}
+
+.turnstile-loader .spinner-dot:nth-child(1) { top: 0; left: 8px; animation-delay: 0s; }
+.turnstile-loader .spinner-dot:nth-child(2) { top: 2px; left: 14px; animation-delay: 0.15s; }
+.turnstile-loader .spinner-dot:nth-child(3) { top: 8px; left: 16px; animation-delay: 0.3s; }
+.turnstile-loader .spinner-dot:nth-child(4) { top: 14px; left: 14px; animation-delay: 0.45s; }
+.turnstile-loader .spinner-dot:nth-child(5) { top: 16px; left: 8px; animation-delay: 0.6s; }
+.turnstile-loader .spinner-dot:nth-child(6) { top: 14px; left: 2px; animation-delay: 0.75s; }
+.turnstile-loader .spinner-dot:nth-child(7) { top: 8px; left: 0; animation-delay: 0.9s; }
+.turnstile-loader .spinner-dot:nth-child(8) { top: 2px; left: 2px; animation-delay: 1.05s; }
+
+@keyframes spinner-fade {
+    0% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0.1; transform: scale(0.6); }
+}
+
+.turnstile-success-icon {
+    font-size: 20px;
+    color: #3e8e60;
+    animation: scale-up 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes scale-up {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.turnstile-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.cloudflare-logo {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #f38020;
+}
+
+.cloudflare-logo i {
+    font-size: 14px;
+}
+
+.cloudflare-logo .cf-text {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+}
+
+.turnstile-links {
+    display: flex;
+    gap: 4px;
+    margin-top: 3px;
+}
+
+.turnstile-links a {
+    color: rgba(255, 255, 255, 0.4);
+    text-decoration: none;
+    font-size: 9px;
+    transition: color 0.2s ease;
+}
+
+.turnstile-links a:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.turnstile-links span {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 9px;
+}
+
+/* Guard Button */
+.verify-btn.guard-btn:not(:disabled) {
+    background: linear-gradient(135deg, #3e8e60, #2d7a4f);
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(62, 142, 96, 0.3);
+}
+
+.verify-btn.guard-btn:not(:disabled):hover {
+    background: linear-gradient(135deg, #4aab72, #37905d);
+    box-shadow: 0 0 30px rgba(62, 142, 96, 0.5);
+    transform: translateY(-1px);
+}
+
+/* Guard Result Box */
+.guard-result-box {
+    background: rgba(62, 142, 96, 0.04);
+    border: 1px solid rgba(62, 142, 96, 0.2);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 28px;
+    animation: fade-in-up 0.5s ease-out;
+}
+
+@keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.guard-result-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #3e8e60;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.guard-result-header i {
+    font-size: 14px;
+}
+
+.guard-code-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.guard-code {
+    font-size: 32px;
+    font-weight: 900;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 4px;
+    color: #ffffff;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.copy-code-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.copy-code-btn:hover {
+    background: rgba(62, 142, 96, 0.15);
+    border-color: #3e8e60;
+    color: #ffffff;
+}
+
+.guard-timer-container {
+    margin-top: 15px;
+    text-align: left;
+}
+
+.guard-timer-text {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.guard-timer-text strong {
+    color: #ffffff;
+    font-family: 'Courier New', monospace;
+}
+
+.guard-progress-bar-wrapper {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.guard-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #3e8e60, #5dcb87);
+    width: 100%;
+    transition: width 1s linear;
+}
+
