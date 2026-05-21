@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emerald Store | Kayıt Ol</title>
+    <link rel="stylesheet" href="g-k_style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+    <body class="auth-page"></body>
+    <div class="container">
+        <form id="registerForm" novalidate>
+            <h2 class="glow-text">Kayıt Ol</h2>
+            <div id="topErrorMessage" class="top-error-box"></div> 
+
+            <div class="input-group">
+                <div class="input-wrapper">
+                    <input type="text" id="username" placeholder="Kullanıcı Adı" autocomplete="off">
+                    <span id="usernameStatus" class="status-icon"></span>
+                </div>
+                <div id="usernameErrorMsg" class="error-text">Bu kullanıcı adı zaten alınmış!</div>
+            </div>
+
+            <div class="input-group">
+                <input type="email" id="email" placeholder="E-posta (@gmail.com)" autocomplete="off">
+                <small id="emailHint" class="input-hint" style="display: none;"></small>
+            </div>
+
+            <div class="input-group password-wrapper">
+                <input type="password" id="password" placeholder="Şifre" autocomplete="off">
+                <span class="toggle-password" data-target="password">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                </span>
+            </div>
+            
+            <div id="capsNotice" class="caps-warning" style="display:none; color: #ff5555; font-size: 12px; margin-top: 5px;">⚠️ Caps Lock Açık!</div>
+            
+            <div class="strength-meter">
+                <div id="strengthBar" class="strength-bar"></div>
+            </div>
+
+            <div class="password-requirements">
+                <div id="lengthReq" class="req-line"><span class="req-dot"></span><p>Şifrenizde en az <strong>8 karakter</strong> bulunmalıdır!</p></div>
+                <div id="numberReq" class="req-line"><span class="req-dot"></span><p>Şifrenizde en az <strong>1 rakam</strong> bulunmalıdır!</p></div>
+                <div id="caseReq" class="req-line"><span class="req-dot"></span><p>Şifrenizde en az <strong id="upperReq">1 büyük</strong> ve <strong id="lowerReq">1 küçük</strong> harf olmalıdır!</p></div>
+            </div>
+
+            <div class="input-group password-wrapper">
+                <input type="password" id="confirmPassword" placeholder="Şifreyi Onayla" autocomplete="off">
+                <span class="toggle-password" data-target="confirmPassword">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                </span>
+            </div>
+
+            <div class="captcha-container">
+                <div class="g-recaptcha" data-sitekey="BURAYA_SİTE_ANAHTARINIZ"></div>
+            </div>
+            <button type="submit" class="glow-button">Kayıt Ol</button>
+            
+            <div class="login-link-container">
+                <p>Zaten hesabın var mı? <a href="giris.html">Giriş Yap</a></p>
+            </div>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

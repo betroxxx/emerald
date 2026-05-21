@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <script>
+    async function checkAccess() {
+        const pendingEmail = localStorage.getItem("pendingEmail");
+        
+        // 1. Adım: Yerel hafıza kontrolü
+        if (!pendingEmail) {
+            window.location.href = "kayit.html";
+            return;
+        }
+
+        // 2. Adım: Sunucu tarafında gerçek kayıt kontrolü
+        try {
+            const res = await fetch("/api/check-pending", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email: pendingEmail })
+            });
+            const data = await res.json();
+            
+            if (!data.valid) {
+                localStorage.removeItem("pendingEmail"); // Sahte veri temizliği
+                window.location.href = "kayit.html";
+            }
+        } catch (err) {
+            console.error("Güvenlik kontrolü başarısız.");
+        }
+    }
+
+    checkAccess(); // Sayfa açılır açılmaz çalıştır
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-posta Doğrulama | Premium Design</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <form id="verifyForm" novalidate>
+            <h2 class="glow-text">E-posta Doğrulama</h2>
+            <p style="text-align: center; font-size: 14px; margin-bottom: 20px; color: #8a8ca0;">
+                E-posta adresinize gönderilen 6 haneli kodu giriniz.
+            </p>
+            <div id="verifyError" class="form-error"></div>
+
+            <div class="input-group">
+                <input type="text" id="verifyCode" placeholder="Doğrulama Kodu" maxlength="6" style="text-align: center; letter-spacing: 5px; font-size: 20px;">
+            </div>
+
+            <button type="submit" class="glow-button">Doğrula ve Bitir</button>
+
+            <div class="footer-link">
+                Kod gelmedi mi? <a href="#" id="resendCode">Tekrar Gönder</a>
+            </div>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

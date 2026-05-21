@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emerald Store | Şifremi Unuttum</title>
+    <link rel="stylesheet" href="g-k_style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div id="successAnim" class="success-animation" style="display: none;">
+            <div class="checkmark-wrapper">
+                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                    <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                    <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                </svg>
+            </div>
+            <p id="successText" class="success-text">E-posta Gönderildi!</p>
+        </div>
+
+        <form id="forgotForm" novalidate>
+            <h2 class="glow-text">Şifremi Unuttum</h2>
+            <p style="color: #aaa; font-size: 0.9rem; text-align: center; margin-bottom: 20px;">
+                Hesabınıza bağlı e-posta adresini girin, size bir sıfırlama bağlantısı gönderelim.
+            </p>
+            <div id="forgotError" class="form-error"></div>
+
+            <div class="input-group">
+                <input type="email" id="forgotEmail" placeholder="E-posta Adresiniz" autocomplete="off">
+            </div>
+
+            <button type="submit" class="glow-button">Bağlantı Gönder</button>
+        </form>
+
+        <div class="footer-link">
+            <a href="giris.html">Giriş Sayfasına Dön</a>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

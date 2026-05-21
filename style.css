@@ -282,7 +282,20 @@ nav ul li a.active {
 .btn-login {
     color: white;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 12px 28px;
+    border-radius: 50px;
+    border: 2px solid transparent;
+    transition: var(--transition);
+}
+
+.btn-login:hover {
+    border-color: var(--primary-green);
+    background: rgba(62, 142, 96, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(62, 142, 96, 0.3);
 }
 
 .btn-register {
@@ -291,8 +304,9 @@ nav ul li a.active {
     border-radius: 50px;
     text-decoration: none;
     color: white;
-    font-weight: 700;
+    font-weight: 600;
     box-shadow: var(--neon-glow);
+    border: 2px solid transparent;
     transition: var(--transition);
 }
 
@@ -1975,7 +1989,7 @@ nav ul li a.active {
     opacity: 0;
     transform: translateY(40px) scale(0.97);
     transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .game-card.card-visible {
@@ -3196,7 +3210,7 @@ header#navbar .logo {
 
 .verify-divider {
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
     margin-bottom: 28px;
 }
 
@@ -3398,18 +3412,64 @@ header#navbar .logo {
     animation: spinner-fade 1.2s infinite linear;
 }
 
-.turnstile-loader .spinner-dot:nth-child(1) { top: 0; left: 8px; animation-delay: 0s; }
-.turnstile-loader .spinner-dot:nth-child(2) { top: 2px; left: 14px; animation-delay: 0.15s; }
-.turnstile-loader .spinner-dot:nth-child(3) { top: 8px; left: 16px; animation-delay: 0.3s; }
-.turnstile-loader .spinner-dot:nth-child(4) { top: 14px; left: 14px; animation-delay: 0.45s; }
-.turnstile-loader .spinner-dot:nth-child(5) { top: 16px; left: 8px; animation-delay: 0.6s; }
-.turnstile-loader .spinner-dot:nth-child(6) { top: 14px; left: 2px; animation-delay: 0.75s; }
-.turnstile-loader .spinner-dot:nth-child(7) { top: 8px; left: 0; animation-delay: 0.9s; }
-.turnstile-loader .spinner-dot:nth-child(8) { top: 2px; left: 2px; animation-delay: 1.05s; }
+.turnstile-loader .spinner-dot:nth-child(1) {
+    top: 0;
+    left: 8px;
+    animation-delay: 0s;
+}
+
+.turnstile-loader .spinner-dot:nth-child(2) {
+    top: 2px;
+    left: 14px;
+    animation-delay: 0.15s;
+}
+
+.turnstile-loader .spinner-dot:nth-child(3) {
+    top: 8px;
+    left: 16px;
+    animation-delay: 0.3s;
+}
+
+.turnstile-loader .spinner-dot:nth-child(4) {
+    top: 14px;
+    left: 14px;
+    animation-delay: 0.45s;
+}
+
+.turnstile-loader .spinner-dot:nth-child(5) {
+    top: 16px;
+    left: 8px;
+    animation-delay: 0.6s;
+}
+
+.turnstile-loader .spinner-dot:nth-child(6) {
+    top: 14px;
+    left: 2px;
+    animation-delay: 0.75s;
+}
+
+.turnstile-loader .spinner-dot:nth-child(7) {
+    top: 8px;
+    left: 0;
+    animation-delay: 0.9s;
+}
+
+.turnstile-loader .spinner-dot:nth-child(8) {
+    top: 2px;
+    left: 2px;
+    animation-delay: 1.05s;
+}
 
 @keyframes spinner-fade {
-    0% { opacity: 1; transform: scale(1); }
-    100% { opacity: 0.1; transform: scale(0.6); }
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0.1;
+        transform: scale(0.6);
+    }
 }
 
 .turnstile-success-icon {
@@ -3419,8 +3479,15 @@ header#navbar .logo {
 }
 
 @keyframes scale-up {
-    from { transform: scale(0); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .turnstile-brand {
@@ -3496,8 +3563,15 @@ header#navbar .logo {
 }
 
 @keyframes fade-in-up {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .guard-result-header {
@@ -3585,4 +3659,3 @@ header#navbar .logo {
     width: 100%;
     transition: width 1s linear;
 }
-

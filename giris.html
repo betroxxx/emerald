@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emerald Store | Giriş Yap</title>
+    <link rel="stylesheet" href="g-k_style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+    <div class="container">
+        <div id="successAnim" class="success-animation" style="display: none;">
+            <div class="checkmark-wrapper">
+                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                    <circle id="animCircle" class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                    <path id="animCheck" class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                </svg>
+            </div>
+            <p id="successText" class="success-text">Giriş Başarılı!</p>
+        </div>
+
+        <form id="loginForm" novalidate>
+            <h2 class="glow-text">Giriş Yap</h2>
+            <div id="loginError" class="form-error" style="display: none; color: #ff5555; text-align: center; margin-bottom: 15px; font-weight: 600;"></div>
+
+            <div class="input-group">
+                <input type="text" id="loginUser" placeholder="Kullanıcı Adı" autocomplete="off">
+            </div>
+
+            <div class="input-group password-wrapper">
+                <input type="password" id="loginPass" placeholder="Şifre" autocomplete="off">
+                <span class="toggle-password" data-target="loginPass">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                </span>
+            </div>
+
+            <div class="login-options">
+    <label class="custom-remember">
+        <input type="checkbox" id="rememberMe">
+        <span class="checkmark"></span>
+        <span class="text">Beni Hatırla</span>
+    </label>
+    <a href="sifremi-unuttum.html" class="forgot-link">Şifremi Unuttum</a>
+</div>
+
+            <button type="submit" class="glow-button">Giriş Yap</button>
+        </form>
+        
+        <div class="footer-link">
+            Hesabın yok mu? <a href="kayit.html">Kayıt Ol</a>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
